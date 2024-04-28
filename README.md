@@ -86,7 +86,12 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_arn"></a> [arn](#output\_arn) | The ARN of the DAX. Will be of format arn:aws:s3:::bucketname. |
+| <a name="output_arn"></a> [arn](#output\_arn) | The ARN of the DAX cluster. |
+| <a name="output_cluster_address"></a> [cluster\_address](#output\_cluster\_address) | The DNS name of the DAX cluster without the port appended. |
+| <a name="output_configuration_endpoint"></a> [configuration\_endpoint](#output\_configuration\_endpoint) | The configuration endpoint for this DAX cluster, consisting of a DNS name and a port number. |
+| <a name="output_nodes"></a> [nodes](#output\_nodes) | List of node objects including id, address, port and availability\_zone. |
+| <a name="output_port"></a> [port](#output\_port) | The port used by the configuration endpoint. |
+| <a name="output_tags_all"></a> [tags\_all](#output\_tags\_all) | A map of tags assigned to the resource, including those inherited from the provider default\_tags configuration block. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## License
