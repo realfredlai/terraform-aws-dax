@@ -1,9 +1,32 @@
 # AWS DynamoDB Accelerator (DAX) module
 Terraform module to create AWS DAX clusters resources with features provided by Terraform AWS provider.
 
-# Usage
+## Usage
 
-# Examples
+```hcl
+module "dax" {
+  source = "realfredlai/dax/aws"
+
+  name               = "dax-example"
+  subnet_ids         = ["subnet-xxx", "subnet-xxx", "subnet-xxx"]
+  policy_statements  = {
+    dynamodb = {
+      effect = "Allow",
+      actions = ["dynamodb:*"],
+      resources = ["*"]
+    },
+  }
+  security_group_ids = ["sg-xxx"]
+}
+```
+
+## Examples
+
+- [Basic example](https://github.com/realfredlai/terraform-aws-dax/tree/main/examples/basic)
+- [Complete example](https://github.com/realfredlai/terraform-aws-dax/tree/main/examples/complete)
+- [Reuse existing IAM role example](https://github.com/realfredlai/terraform-aws-dax/tree/main/examples/with-existing-iam-role)
+- [Reuse existing parameter group example](https://github.com/realfredlai/terraform-aws-dax/tree/main/examples/with-existing-parameter-group)
+- [Reuse existing subnet group example](https://github.com/realfredlai/terraform-aws-dax/tree/main/examples/with-existing-subnet-group)
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -54,8 +77,8 @@ No modules.
 | <a name="input_policy_statements"></a> [policy\_statements](#input\_policy\_statements) | Map of dynamic policy statements to attach to DAX role | `any` | `{}` | no |
 | <a name="input_replication_factor"></a> [replication\_factor](#input\_replication\_factor) | The number of nodes in the DAX cluster. A replication factor of 1 will create a single-node cluster, without any read replicas. | `number` | `3` | no |
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | One or more VPC security groups associated with the cluster. | `list(string)` | `[]` | no |
-| <a name="input_subnet_group_description"></a> [subnet\_group\_description](#input\_subnet\_group\_description) | Description of the subnet group to be used for the cluster. Only required when subnet\_group\_name is not present. | `string` | `""` | no |
-| <a name="input_subnet_group_name"></a> [subnet\_group\_name](#input\_subnet\_group\_name) | Name of the subnet group to be used for the cluster. If not present, a subnet group will be created, and subnet\_group\_description and subnet\_ids are required. | `string` | `""` | no |
+| <a name="input_subnet_group_description"></a> [subnet\_group\_description](#input\_subnet\_group\_description) | Description of the subnet group to be used for the cluster. | `string` | `""` | no |
+| <a name="input_subnet_group_name"></a> [subnet\_group\_name](#input\_subnet\_group\_name) | Name of the subnet group to be used for the cluster. If not present, a subnet group will be created, and subnet\_ids are required. | `string` | `""` | no |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | Name of the subnet ids to form subnet group to be used for the cluster. Only required when subnet\_group\_name is not present. | `list(string)` | `[]` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A mapping of tags to assign to the resource. | `map(string)` | `{}` | no |
 
@@ -65,3 +88,7 @@ No modules.
 |------|-------------|
 | <a name="output_arn"></a> [arn](#output\_arn) | The ARN of the DAX. Will be of format arn:aws:s3:::bucketname. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+## License
+
+Apache 2 Licensed. See [LICENSE](https://github.com/terraform-aws-modules/terraform-aws-iam/tree/master/LICENSE) for full details.

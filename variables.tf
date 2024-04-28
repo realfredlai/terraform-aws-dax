@@ -30,13 +30,13 @@ variable "replication_factor" {
 ################################################################################
 
 variable "subnet_group_name" {
-  description = "Name of the subnet group to be used for the cluster. If not present, a subnet group will be created, and subnet_group_description and subnet_ids are required."
+  description = "Name of the subnet group to be used for the cluster. If not present, a subnet group will be created, and subnet_ids are required."
   type        = string
   default     = ""
 }
 
 variable "subnet_group_description" {
-  description = "Description of the subnet group to be used for the cluster. Only required when subnet_group_name is not present."
+  description = "Description of the subnet group to be used for the cluster."
   type        = string
   default     = ""
 }
