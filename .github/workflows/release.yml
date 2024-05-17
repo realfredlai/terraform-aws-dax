@@ -2,6 +2,7 @@ name: Release
 
 on:
   workflow_dispatch:
+    #checkov:skip=CKV_GHA_7:Default input required
     inputs:
       logLevel:
         description: 'Log level'
